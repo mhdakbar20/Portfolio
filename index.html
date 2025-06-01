@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio Muhammad Akbar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pap5u6nKV2e+RFB2kkUpG7ZznG7UYaCTo0J3mPYMaN1L2Bzj0HVlQjQ+UJJ1uOpukjG0GLftZZCKcZyl7Rgx5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Orbitron', sans-serif;
+    }
+    body {
+      background-color: black;
+      color: #00ccff;
+      overflow-x: hidden;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      background: #0d0d0d;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      border-bottom: 1px solid #00ccff;
+    }
+    header h1 {
+      font-size: 20px;
+    }
+    nav a {
+      margin-left: 20px;
+      color: #00ccff;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #00ffff;
+    }
+    body.light-theme {
+      background-color: #f0f0f0;
+      color: #003344;
+    }
+    body.light-theme header,
+    body.light-theme footer {
+      background: #ffffff;
+      color: #003344;
+      border-color: #003344;
+    }
+    body.light-theme .contact-form input,
+    body.light-theme .contact-form textarea {
+      background: #fff;
+      color: #003344;
+      border: 1px solid #003344;
+    }
+
+    body.light-theme .contact-form button {
+      background: #003344;
+      color: #fff;
+    }
+    body.light-theme .project-content h3 {
+      color: #00ccff;
+    }
+    body.light-theme .hero-text {
+      color: black;
+    }
+    body.light-theme #journey li {
+      color: black;
+    }
+    body.light-theme #about p {
+      color: black;
+    }
+    .about-text {
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+      color: #aaf0ff;
+    }
+    .hero {
+      animation: pulseGlow 3s ease-in-out infinite;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 80px 50px;
+      background: url('image/') no-repeat center center/cover;
+    }
+    .hero-text {
+      max-width: 50%;
+      animation: fadeIn 2s ease-in-out;
+      color: #00ccff;
+    }
+    .hero-text h2 {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+    .hero-text p {
+      font-size: 18px;
+      margin-bottom: 40px;
+    }
+
+    .btn-primary {
+      padding: 10px 25px;
+      background-color: #0099cc;
+      color: white;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.3s ease;
+      font-family: arial;
+    }
+    .btn-primary:hover {
+      background-color: #006699;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff; }
+      40% { text-shadow: 0 0 20px #00ccff, 0 0 40px #00ccff; }
+    }
+    .section {
+      padding: 80px 20px;
+    }
+    .section h2 {
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 40px;
+    }
+    .projects {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+    .project {
+      background: #111;
+      border: 2px solid #00ccff;
+      border-radius: 10px;
+      width: 300px;
+      overflow: hidden;
+      box-shadow: 0 0 10px #00ccff;
+      transition: transform 0.3s ease;
+    }
+    .project:hover {
+      transform: scale(1.05);
+    }
+    .project img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .project-content {
+      padding: 20px;
+      text-align: center;
+    }
+    .project-content h3 {
+      margin-bottom: 10px;
+    }
+    .project-content p {
+      color: white;
+      font-family: arial;
+    }
+    .btn-view {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: #ffff;
+      color: #000;
+      border: none;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 12px;
+      transition: background 0.3s;
+    }
+    .btn-view:hover {
+      background: #00ffff;
+    }
+    .contact-form {
+      max-width: 600px;
+      margin: auto;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      background: #222;
+      color: #00ccff;
+      border: 1px solid #00ccff;
+    }
+    .contact-form button {
+      background: #00ccff;
+      color: #000;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .contact-form button:hover {
+      background: #00ffff;
+    }
+    .social-links {
+      margin-top: 40px;
+      text-align: center;
+    }
+    .social-links a {
+      color: #00ccff;
+      font-size: 1.5em;
+      margin: 0 10px;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .social-links a:hover {
+      color: #00ffff;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #0d0d0d;
+      color: #00ccff;
+      border-top: 1px solid #00ccff;
+      font-size: 12px;
+    }
+    [data-animate] {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s ease;
+    }
+    [data-animate].visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /*body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(-45deg, #1e3c72, #2a5298, #1e3c72, #0f2027);
+      background-size: 400% 400%;
+      animation: gradientAnimation 15s ease infinite;
+      transition: background-color 0.5s, color 0.5s;
+    }
+
+    @keyframes gradientAnimation {
+      0% {
+      background-position: 0% 50%;
+      }
+      50% {
+      background-position: 100% 50%;
+      }
+      100% {
+      background-position: 0% 50%;
+      }
+    }
+
+    /* Untuk tema terang */
+    /*body.light-theme {
+      background: linear-gradient(-45deg, #e0f7fa, #b2ebf2, #e0f7fa, #b2ebf2);
+      background-size: 400% 400%;
+      animation: gradientAnimation 15s ease infinite;
+    }*/
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Muhammad Akbar</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#journey">Journey</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <label style="cursor: pointer;">
+      <input type="checkbox" id="themeToggle" style="display: none;">
+      <span style="padding: 10px; border: 1px solid #00ccff; border-radius: 20px;">🌙</span>
+    </label>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h2>Hello, I'm Muhammad Akbar</h2>
+      <p>A passionate developer crafting modern and elegant web experiences.</p>
+      <button class="btn-primary" onclick="window.open('cv.pdf', '_blank')">Lihat CV</button>
+    </div>
+    <div class="hero-image">
+      <img src="image/akbar.jpeg" alt="Profile" style="width:250px; border-radius: 15%; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+    </div>
+  </section>
+
+  <section id="about" class="section" data-animate>
+    <h2 class="section-title">About Me</h2>
+    <p class="about-text">I am a full-stack developer with experience in PHP, JavaScript, and modern front-end frameworks. I focus on creating high-performance, responsive, and visually pleasing websites with clean and maintainable code.</p>
+  </section>
+
+  <section id="journey" class="section" data-animate>
+    <h2>My Journey</h2>
+    <ul style="list-style: none; padding-left: 0; max-width: 700px; margin: auto; color: #aaf0ff;">
+      <li style="margin-bottom: 30px;">
+      <strong>2022 - Present</strong><br>
+        Freelance Web Developer – Working on futuristic interfaces for startups.
+      </li>
+      <li style="margin-bottom: 30px;">
+      <strong>2020 - 2022</strong><br>
+        Computer Science Student – Learned full-stack development and UI/UX design.
+      </li>
+    </ul>
+  </section>
+
+  <section id="skills" class="section" data-animate>
+      <h2>Skills</h2>
+      <div class="skills-container" style="max-width: 800px; margin: auto;">
+        <div style="margin-bottom: 20px;">
+          <label>HTML</label>
+          <div style="background:#111; border:1px solid #00ccff; border-radius: 10px; overflow: hidden;">
+              <div style="width: 80%; height: 20px; background: linear-gradient(90deg, #00ccff, #00ffff);"></div>
+          </div>
+        </div>
+        <div style="margin-bottom: 20px;">
+          <label>JavaScript</label>
+          <div style="background:#111; border:1px solid #00ccff; border-radius: 10px; overflow: hidden;">
+              <div style="width: 70%; height: 20px; background: linear-gradient(90deg, #00ccff, #00ffff);"></div>
+          </div>
+        </div>
+    <!-- Tambah skill lain sesuai kebutuhan -->
+      </div>
+  </section>
+
+  <section id="projects" class="section" data-animate>
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="project">
+        <img src="image/kemaro.jpg" alt="Project 1">
+        <div class="project-content">
+          <h3>Neon Dashboard</h3>
+          <p>A dynamic admin dashboard with glowing UI and charts.</p>
+          <a href="image/kemaro.jpg" class="btn-view">Lihat</a>
+        </div>
+      </div>
+      <div class="project">
+        <img src="image/kemaro.jpg" alt="Project 2">
+        <div class="project-content">
+          <h3>Crypto Tracker</h3>
+          <p>Live cryptocurrency tracker with PHP and WebSocket integration.</p>
+          <a href="#" class="btn-view">Lihat</a>
+        </div>
+      </div>
+      <div class="project">
+        <img src="image/kemaro.jpg" alt="Project 3">
+        <div class="project-content">
+          <h3>Game Store UI</h3>
+          <p>Neon-inspired e-commerce front-end for digital game sales.</p>
+          <a href="#" class="btn-view">Lihat</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section" data-animate>
+    <h2>Contact Me</h2>
+    <form class="contact-form" action="contact.php" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Kirim</button>
+    </form>
+    <div class="social-links">
+      <a href="https://facebook.com/yourusername" target="_blank">
+        <i class="fab fa-facebook"></i> Facebook
+      </a>
+      <a href="https://twitter.com/yourusername" target="_blank">
+        <i class="fab fa-twitter"></i>Twitter
+      </a>
+      <a href="https://instagram.com/m.hdakbar_" target="_blank">
+        <i class="fab fa-instagram"></i> Instagram
+      </a>
+      <a href="https://linkedin.com/in/Muhammad Akbar" target="_blank">
+        <i class="fab fa-linkedin-in"></i> Linkedin
+      </a>
+      <a href="https://github.com/mhdakbar20" target="_blank">
+        <i class="fab fa-github"></i> Github
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Muhammad Akbar. All rights reserved.
+  </footer>
+
+  <script>
+    const animElements = document.querySelectorAll('[data-animate]');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    animElements.forEach(el => observer.observe(el));
+
+    document.getElementById('themeToggle').addEventListener('change', function() {
+    document.body.classList.toggle('light-theme');
+  });
+  </script>
+</body>
+</html>
